@@ -1,12 +1,12 @@
 var mongoose = require( 'mongoose' )
 
 
-var todos = mongoose.model( 'Todos', mongoose.Schema({
+var photos = mongoose.model( 'Photos', mongoose.Schema({
 
-	text: { type: String, default: '' } ,
-	id_name: { type: String, default: '' },
-	state: { type: String, default: '' }
-	
-}) )
+//	number: { type: String, default: '' },
+	name: { type: String, default: '' },
+	src: { type: String, default: '' }
 
-module.exports = todos
+})
+
+module.exports = content

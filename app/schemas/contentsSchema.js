@@ -1,12 +1,14 @@
 var mongoose = require( 'mongoose' )
 
-var usersSchema = mongoose.Schema({
-	name:			{ type: String, default: '' },
-	password:	    { type: String, default: '' },
-	token:          { type: String, default: '' }
+var contentsSchema = mongoose.Schema({
+
+//	number: { type: String, default: '' },
+	name: { type: String, default: '' },
+	text: { type: String, default: '' }
+
 })
 
 
-var users = mongoose.model( 'Users', usersSchema )
+var content = mongoose.model( 'Contents', contentsSchema )
 
-module.exports = users
+module.exports = content

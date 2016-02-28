@@ -1,12 +1,10 @@
 var mongoose = require( 'mongoose' )
 
 
-var todos = mongoose.model( 'Todos', mongoose.Schema({
+var pages = mongoose.model( 'Pages', mongoose.Schema({
 
-	text: { type: String, default: '' } ,
-	id_name: { type: String, default: '' },
-	state: { type: String, default: '' }
+	name: { type: String, default: '' } ,
 	
 }) )
 
-module.exports = todos
+module.exports = pages
