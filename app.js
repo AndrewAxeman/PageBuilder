@@ -10,7 +10,7 @@ var bodyParser = require('body-parser')
 */
 
 var app = express()
-var port = 9000
+var port = 7777
 
 /**
 * Configure app
@@ -18,7 +18,7 @@ var port = 9000
 mongoose.connect( 'mongodb://Axeman:0000@ds053305.mongolab.com:53305/brutto',
 	function() { console.log('Connected to db') } )
 
-app.use( express.static( path.join( __dirname, './public' ) ))
+app.use( express.static( path.join( __dirname, './view' ) ))
 
 // parse application/x-www-form-urlencoded 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -32,7 +32,7 @@ app.use(bodyParser.json())
 */
 
 app.get( '/', function( req, res ) {
-res.sendFile( path.join( __dirname, './public' ) )
+res.sendFile( path.join( __dirname, './view' ) )
 
 } )
 
