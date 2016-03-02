@@ -34,7 +34,7 @@ module.exports = class Content {
 		var name = req.body.name.replace(/\s+/g,"")
           
 
-        if( name !=='' && form.some(re.body.ext) ){
+        if( name !=='' ){
 
         	// if( form.some(re.body.ext) ){
 
