@@ -23,8 +23,8 @@ mongoose.connect( 'mongodb://Axeman:0000@ds053305.mongolab.com:53305/brutto',
 
 app.use( express.static( path.join( __dirname, '../view' ) ))
  
+
 // parse application/json 
-//app.use(bodyParser.json())
 app.use( bodyParser.json( { limit: '50mb' } ))
 app.use( bodyParser.urlencoded( { limit: '50mb', extended: true } ))
 

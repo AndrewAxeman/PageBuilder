@@ -34,9 +34,9 @@ module.exports = [
 
 { method:'post', path: '/photo', handler:PhotoCRUD.add_photo.bind( PhotoCRUD ) },
 
-// { method:'delete', path: '/content', handler:PhotoCRUD.delete_text.bind( PhotoRUD ) },
+{ method:'delete', path: '/photo', handler:PhotoCRUD.delete_photo.bind( PhotoCRUD ) },
 
-// { method:'get', path: '/content/:id', handler:PhotoCRUD.getAllContent.bind(PhotoCRUD ) },
+{ method:'get', path: '/photo/:id', handler:PhotoCRUD.getAllImages.bind(PhotoCRUD ) },
 
 // { method:'put', path: '/content', handler:PhotoCRUD.update_text.bind(PhotoCRUD ) },
 

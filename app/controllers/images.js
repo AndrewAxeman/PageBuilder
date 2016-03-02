@@ -7,17 +7,20 @@ var driverImage = new db ('images')
 var driverPage = new db ('pages')
 
 var fs = require( "fs" )
+//var path = require( "path" )
 
 
 module.exports = class Content {
 
-	delete_text( req, res ){
+	delete_photo( req, res ){
 
-		 driverContent.delete( req.body.id  , function ( err, result ){
+		 driverImage.delete( req.body.id  , function ( err, result ){
+             
+             fs.unlinkSync('../view/'+req.body.way)
 
 		     console.log( err )
 
-		     res.json( { message: "Text was delete" } )
+		     res.json( { message: "Image delete" } )
 	     
 	     } )
 				
@@ -27,37 +30,48 @@ module.exports = class Content {
 	add_photo( req, res ){
         
 		var name = req.body.name.replace(/\s+/g,"")
-           
+          
+
         if( name !=='' ){
 
-	        driverPage.getOne( { _id: req.body.id_name } , function ( error, result ){
+        	if( req.body.code !== undefined ){
 
-            console.log( result )
+		        driverPage.getOne( { _id: req.body.id_name } , function ( error, result ){
 
-	             if ( result ){
-     				
- 				     var base64Data = req.body.code.split(',')
+	            console.log( result )
 
-			         var end = base64Data[1].replace(/ /ig,"+")
-			                 
-			         var path = "./images/"+req.body.name+"."+req.body.ext
-					
-					 fs.writeFileSync( path , end, 'base64')
+		             if ( result ){
+	     				
+	 				     var base64Data = req.body.code.split(',')
+
+				         var end = base64Data[1].replace(/ /ig, "+")
+
+				         //path.join(__dirname, '../view/images' )
+				                 
+				         var path = "images/"+req.body.name+"."+req.body.ext
+						
+						 fs.writeFileSync( '../view/'+path , end, 'base64')
 
 
-					driverImage.create( { id_name: result._id  , name: req.body.name, src: path }, function ( err, entity ){ 
+						driverImage.create( { id_name: result._id  , name: req.body.name, src: path }, function ( err, entity ){ 
 
-						res.json( { message: "Image Add" } )
-                
-                     })                    
-			     
-			     }else{
-	            
-	             res.json( { message: "Page is not found" }  )
+							res.json( { message: "Image Add" } )
+	                
+	                     })                    
+				     
+				     }else{
+		            
+		             res.json( { message: "Page is not found" }  )
 
-			     }
+				     }
 
-			})
+				})
+
+			}else{
+
+              res.json( { message:"Upload photo"} )
+
+			}	
 
 		}else{
 		
@@ -75,7 +89,7 @@ module.exports = class Content {
 
              if ( result !== null ){
 
-				driverContent.getALL( result._id  , function ( err, entity ){
+				driverImage.getALL( result._id  , function ( err, entity ){
 
 				res.send( entity )
 
