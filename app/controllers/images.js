@@ -38,8 +38,6 @@ module.exports = class Content {
 
 		        driverPage.getOne( { _id: req.body.id_name } , function ( error, result ){
 
-	            console.log( result )
-
 		             if ( result ){
 	     				
 	 				     var base64Data = req.body.code.split(',')
@@ -92,8 +90,6 @@ module.exports = class Content {
 				driverImage.getALL( result._id  , function ( err, entity ){
 
 				res.send( entity )
-
-                console.log( entity )
 		        
 		        })
 
