@@ -9,7 +9,7 @@ module.exports = class Driver {
 	create( params ,cb ){
 
 		var obj = new this.Model(params)
-		console.log( obj )
+		
 		obj.save( function ( err, entity ) {
 
 		  cb( err, entity)
@@ -67,8 +67,8 @@ module.exports = class Driver {
 
 		this.Model.findOneAndUpdate( { _id: opts._id }, opts, {}, function ( err, result ) {
 		  if ( err ) {
-		    console.log('got an error');
-		  }
+		    console.log( err );
+		  } 
 		  cb( err, result )
 		  
 		})

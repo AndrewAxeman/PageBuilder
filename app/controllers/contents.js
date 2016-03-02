@@ -55,7 +55,7 @@ module.exports = class Content {
         if( name !=='' && text !=='' ){
 
 	        driverPage.getOne( { _id: req.body.id_name } , function ( error, result ){
-            console.log( result )
+
 	             if ( result ){
 
 						driverContent.create( { id_name: result._id  , name: req.body.name, text: req.body.text }, function ( err, entity ){ 
@@ -91,8 +91,6 @@ module.exports = class Content {
 				driverContent.getALL( result._id  , function ( err, entity ){
 
 				res.send( entity )
-
-                console.log( entity )
 		        
 		        })
 

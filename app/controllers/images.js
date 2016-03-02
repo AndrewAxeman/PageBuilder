@@ -28,13 +28,15 @@ module.exports = class Content {
 
 
 	add_photo( req, res ){
-        
+
+        var form=["gif","jpg","jpeg","psd","png"]
+
 		var name = req.body.name.replace(/\s+/g,"")
           
 
-        if( name !=='' ){
+        if( name !=='' && form.some(re.body.ext) ){
 
-        	if( req.body.code !== undefined ){
+        	// if( form.some(re.body.ext) ){
 
 		        driverPage.getOne( { _id: req.body.id_name } , function ( error, result ){
 
@@ -65,15 +67,15 @@ module.exports = class Content {
 
 				})
 
-			}else{
+			// }else{
 
-              res.json( { message:"Upload photo"} )
+   //            res.json( { message:"Upload photo"} )
 
-			}	
+			// }	
 
 		}else{
 		
-             res.json( { message:"Please enter name"} )
+             res.json( { message:"Fill All"} )
 
 
 		}	
