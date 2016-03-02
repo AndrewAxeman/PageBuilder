@@ -2,7 +2,7 @@ var mongoose = require( 'mongoose' )
 
 var contentsSchema = mongoose.Schema({
 
-//	number: { type: String, default: '' },
+    id_name: { type: String, default: '' },
 	name: { type: String, default: '' },
 	text: { type: String, default: '' }
 

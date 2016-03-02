@@ -29,6 +29,16 @@ module.exports = class Driver {
 	}
 
 
+	findAll ( opts , cb ) {
+
+	this.Model.find(  opts , function ( err, entity ) {
+
+			cb( err, entity )
+
+		})
+	}
+
+
 	getOne ( params, cb ) {
 
 		  this.Model.findOne( params, function ( err, entity ) {

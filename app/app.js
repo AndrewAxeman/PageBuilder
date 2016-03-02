@@ -22,12 +22,12 @@ mongoose.connect( 'mongodb://Axeman:0000@ds053305.mongolab.com:53305/brutto',
 	function() { console.log('Connected to db') } )
 
 app.use( express.static( path.join( __dirname, '../view' ) ))
-
-// parse application/x-www-form-urlencoded 
-app.use(bodyParser.urlencoded({ extended: false }))
  
 // parse application/json 
-app.use(bodyParser.json())
+//app.use(bodyParser.json())
+app.use( bodyParser.json( { limit: '50mb' } ))
+app.use( bodyParser.urlencoded( { limit: '50mb', extended: true } ))
+
  
 
 /**
