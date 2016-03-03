@@ -8,19 +8,19 @@ module.exports = class Router {
 
     constructor( app ){
 
-     this.app = app
+         this.app = app
 
-     this.configup( config )
+         this.configup( config )
 
     }
 	 
 	 configup( route ){ 
 
-     config.map( route => {
+         config.map( route => {
 
-	 this.app[ route.method ]( route.path, route.handler )
+    	 this.app[ route.method ]( route.path, route.handler )
 
-	 })
+    	 })
      
      }
 }

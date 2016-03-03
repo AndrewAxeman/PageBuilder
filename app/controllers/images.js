@@ -34,9 +34,9 @@ module.exports = class Content {
 		var name = req.body.name.replace(/\s+/g,"")
           
 
-        if( name !=='' ){
+        if( name !=='' && form.some(elem => elem === req.body.ext)){
 
-        	// if( form.some(re.body.ext) ){
+        	// if( form.some(elem => elem === req.body.ext) ){
 
 		        driverPage.getOne( { _id: req.body.id_name } , function ( error, result ){
 
@@ -75,7 +75,7 @@ module.exports = class Content {
 
 		}else{
 		
-             res.json( { message:"Fill All"} )
+             res.json( { message:"Fill in All, Man"} )
 
 
 		}	
