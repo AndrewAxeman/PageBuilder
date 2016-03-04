@@ -33,13 +33,13 @@ module.exports = class Content {
 
 			     console.log( err )
 
-			     res.json( { message: "Contant update" } )
+			     res.json( { message: "Content update" } )
        
 		     } )
 
 		}else{
 		
-            res.json( { message:"Please enter text" } )
+            res.json( { message:"Please enter name or text" } )
 
 		}     
 	

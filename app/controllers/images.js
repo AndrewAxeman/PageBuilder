@@ -75,7 +75,7 @@ module.exports = class Content {
 
 		}else{
 		
-             res.json( { message:"Fill in All, Man"} )
+             res.json( { message:"Enter Name or onload image, Man"} )
 
 
 		}	

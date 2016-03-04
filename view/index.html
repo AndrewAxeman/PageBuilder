@@ -19,38 +19,96 @@
     <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4">
-			<form role="form">
+			<form role="form" action="#">
 				<div class="form-group">
 					 
 					<label for="exampleInputEmail1">
 						+ ADD Page
 					</label>
-					<input type="text" class="form-control" id="InputPage">
+					<input type="text" class="form-control" id="InputPage" placeholder="Enter Name"/>
 				</div>
-				<button type="submit" class="btn btn-default" onclick="create_page()">
-					Submit
+				<button type="submit" class="btn btn-default" onClick="create_page( $('#InputPage').val() )">
+					Create Page
 				</button>
+				   <div id="openModal" class="modalDialog">
+						<div>
+							<a href="#close" title="Закрыть" class="close">X</a>
+							<h2>Make the change</h2>
+								<form role="form" action="#" id="ChangePage">
+									<div class="form-group">
+										 
+										<label for="exampleInputEmail1">
+											Name
+										</label>
+										<input type="text" class="form-control" id="ChangeNamePage" />
+									</div>
+									<button type="submit" class="btn btn-default popupbut" onClick="update_page( $(this).attr('id'), $('#ChangeNamePage').val())">
+										OK
+									</button>
+								</form>
+						</div>
+				    </div>
 			</form>
+			<table class="table" >
+				<thead>
+					<tr>
+						<th>
+							Name
+						</th>
+						<th>
+							
+						</th>
+						<th>
+							
+						</th>
+					</tr>
+				</thead>
+				<tbody id="Pages">
+				</tbody>
+			</table>	
 		</div>
-		<div class="col-md-4">
-			<form role="form">
+		<div class="col-md-4" id="ContentBlock" style="display: none"  >
+			<form role="form"  action="#">
 				<div class="form-group">
 					 
 					<label for="exampleInputEmail1">
 						+ ADD Content
 					</label>
-					<input type="text" class="form-control" id="InputContent" >
+					<input type="text" class="form-control" id="InputContentName" placeholder="Enter Name" >
+					<input type="text" class="form-control" id="InputContentText" placeholder="Enter Text">
 				</div>
-				<button type="submit" class="btn btn-default" >
-					Submit
+				<button type="submit" class="btn btn-default" id="" onClick="create_contents( $(this).attr('id'), $('#InputContentName').val(), $('#InputContentText').val())">
+					ADD Contents
 				</button>
+				<div id="openModal2" class="modalDialog">
+					<div>
+						<a href="#close" title="Закрыть" class="close">X</a>
+						<h2>Make the change</h2>
+							<form role="form" action="#" id="ChangeContent">
+								<div class="form-group">
+									 
+									<label for="exampleInputEmail1">
+										Name
+									</label>
+									<input type="text" class="form-control" id="ChangeName" />
+								</div>
+								<div class="form-group">
+									 
+									<label for="exampleInputPassword1">
+										Text
+									</label>
+									<input type="text" class="form-control" id="ChangeText" />
+								</div>
+								<button type="submit" class="btn btn-default popupbut" onClick="update_content( $('.popupbut').attr('_id'), $('#ChangeName').val(), $('#ChangeText').val(), $('.popupbut').attr('id_name') )">
+									OK
+								</button>
+							</form>
+					</div>
+				</div>
 			</form>
-			<table class="table" id="ContentForm">
+			<table class="table" >
 				<thead>
 					<tr>
-						<th>
-							#
-						</th>
 						<th>
 							Name
 						</th>
@@ -58,193 +116,57 @@
 							Text
 						</th>
 						<th>
-							Status
+							
+						</th>
+						<th>
+							
 						</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<td>
-							1
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							01/04/2012
-						</td>
-						<td>
-							Default
-						</td>
-					</tr>
-					<tr class="active">
-						<td>
-							1
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							01/04/2012
-						</td>
-						<td>
-							Approved
-						</td>
-					</tr>
-					<tr class="success">
-						<td>
-							2
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							02/04/2012
-						</td>
-						<td>
-							Declined
-						</td>
-					</tr>
-					<tr class="warning">
-						<td>
-							3
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							03/04/2012
-						</td>
-						<td>
-							Pending
-						</td>
-					</tr>
-					<tr class="danger">
-						<td>
-							4
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							04/04/2012
-						</td>
-						<td>
-							Call in to confirm
-						</td>
-					</tr>
+				<tbody id="FormContent">
 				</tbody>
 			</table>
 		</div>
-		<div class="col-md-4">
-			<form role="form">
+		<div class="col-md-4" id="ImageBlock" style="display: none">
+			<form role="form" action="#">
 				<div class="form-group">
 					 
 					<label for="exampleInputEmail1">
 						+ ADD Photo
 					</label>
-					<input type="email" class="form-control" id="InputPhoto">
+					<input type="text" class="form-control" id="InputPhoto" placeholder="Enter Name">
 				</div>
-				<button type="submit" class="btn btn-default" onclick="add_photo( $('#InputPhoto').val() )">
+				<input id="fileUpload" type="file" multiple />
+				<div id="image-holder"></div>
+				<button type="submit" class="btn btn-default photo" id="" onclick="add_photo( $(this).attr('id'), $('#InputPhoto').val(), $(this).attr('photoTag'), $(this).attr('photoImg') )">
 					Submit
 				</button>
 			</form>
-			<table class="table">
+			<table class="table" >
 				<thead>
 					<tr>
 						<th>
-							#
+							Name
 						</th>
 						<th>
-							Product
+							Image
 						</th>
 						<th>
-							Payment Taken
-						</th>
-						<th>
-							Status
+							
 						</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<td>
-							1
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							01/04/2012
-						</td>
-						<td>
-							Default
-						</td>
-					</tr>
-					<tr class="active">
-						<td>
-							1
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							01/04/2012
-						</td>
-						<td>
-							Approved
-						</td>
-					</tr>
-					<tr class="success">
-						<td>
-							2
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							02/04/2012
-						</td>
-						<td>
-							Declined
-						</td>
-					</tr>
-					<tr class="warning">
-						<td>
-							3
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							03/04/2012
-						</td>
-						<td>
-							Pending
-						</td>
-					</tr>
-					<tr class="danger">
-						<td>
-							4
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							04/04/2012
-						</td>
-						<td>
-							Call in to confirm
-						</td>
-					</tr>
+				<tbody id="FormImage">
+
 				</tbody>
 			</table>
 		</div>
 	</div>
 </div>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
   </body>
+    <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
 </html>
